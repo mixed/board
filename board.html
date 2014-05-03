@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Board</title>
+  </head>
+  <body>
+     <script type="text/javascript" src="keycode.js"></script>
+     <script type="text/javascript" src="board.js"></script>
+     <script type="text/javascript" src="shortcut.js"></script>
+     <script type="text/javascript">
+
+     Board.init();
+
+     Shortcut.init({
+      "command -" : Board.fontSize.bind(Board,-5),
+      "command =" : Board.fontSize.bind(Board,5),
+      "command `" : Board.mode.bind(Board),
+      "command 1" : Board.color.bind(Board,"red"),
+      "command 2" : Board.color.bind(Board,"blue"),
+      "command 3" : Board.color.bind(Board,"green")
+     });
+     //command,ctrl,shift,alt만 동시에 쓸 수 있고 스페이스로 구분.
+     
+     
+     </script>
+  </body>
+</html>
+
