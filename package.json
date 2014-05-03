@@ -1,0 +1,24 @@
+{
+  "name": "board",
+  "version": "0.0.1",
+  "description": "board for video education",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mixed/board.git"
+  },
+  "keywords": [
+    "canvas",
+    "javascript",
+    "board"
+  ],
+  "author": "YongWoo Jeon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mixed/board/issues"
+  },
+  "homepage": "https://github.com/mixed/board",
+  "devDependencies": {
+    "grunt": "^0.4.4"
+  }
+}
