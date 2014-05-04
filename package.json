@@ -2,7 +2,6 @@
   "name": "board",
   "version": "0.0.1",
   "description": "board for video education",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/mixed/board.git"
