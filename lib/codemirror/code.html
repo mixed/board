@@ -1,0 +1,54 @@
+
+<!doctype html>
+
+<title>CodeMirror: Active Line Demo</title>
+<meta charset="utf-8"/>
+
+<link rel="stylesheet" href="lib/codemirror.css">
+<script src="lib/codemirror.js"></script>
+<script src="mode/javascript/javascript.js"></script>
+<script src="addon/selection/active-line.js"></script>
+<style type="text/css">
+      .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
+      .CodeMirror-sizer{
+        font-size: 15px;
+        font-family: Consolas;
+      }
+
+</style>
+
+<article>
+<h2>Active Line Demo</h2>
+<form><textarea id="code" name="code">
+function test(){
+  
+}
+</textarea></form>
+
+    <script>
+var currentSize = 15;
+function changeFontSize(){
+  document.querySelector(".CodeMirror-sizer").style.fontSize =  currentSize+"px";
+}
+CodeMirror.keyMap.macDefault["Cmd-."] = function(){
+  currentSize++;
+  changeFontSize();
+}
+
+CodeMirror.keyMap.macDefault["Cmd-,"] = function(){
+  currentSize--;
+  changeFontSize();
+}
+
+
+var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+  mode: "javascript",
+  styleActiveLine: true,
+  lineNumbers: true
+});
+
+</script>
+
+    <p>Styling the current cursor line.</p>
+
+  </article>

@@ -4,23 +4,86 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>Board</title>
+    <link rel="stylesheet" href="../lib/codemirror/lib/codemirror.css">
+    <script type="text/javascript" src="../dist/board.min.js"></script>
+    <script src="../lib/codemirror/lib/codemirror.js"></script>
+    <script src="../lib/codemirror/mode/javascript/javascript.js"></script>
+    <script src="../lib/codemirror/addon/selection/active-line.js"></script>
+    <style type="text/css">
+      #code{
+        position: absolute;
+      }
+      .CodeMirror-sizer{
+        font-size: 25px;
+        font-family: Consolas;
+      }
+    </style>
   </head>
   <body>
-     <script type="text/javascript" src="../dist/board.min.js"></script>
+    <div id="code"></div>
      <script type="text/javascript">
+      var CodeMirrorHelper = {
+          init : function(){
+            this.code = document.getElementById("code");
+          },
+          toggle : function(){
+            if(this.initialized){
+              this.toggle = function(){
+                if(this.code.style.display == "none"){
+                  this.code.style.display = "block";
+                }else{
+                  this.code.style.display = "none";
+                }
+              }
+              this.toggle();
+            }else{
+              this.create();
+              this.initialized = true;
+            }
+          },
+          create : function(){
+            this.code.style.height = document.documentElement.clientHeight+"px";
 
+            var currentSize = 15;
+
+            function changeFontSize(){
+              document.querySelector(".CodeMirror-sizer").style.fontSize =  currentSize+"px";
+            }
+            CodeMirror.keyMap.macDefault["Cmd-."] = function(){
+              currentSize++;
+              changeFontSize();
+            }
+
+            CodeMirror.keyMap.macDefault["Cmd-,"] = function(){
+              currentSize--;
+              changeFontSize();
+            }
+
+            var myCodeMirror = CodeMirror(this.code, {
+              value: "",
+              mode:  "javascript",
+              styleActiveLine: true,
+              lineNumbers: true
+            });
+            myCodeMirror.setSize(800, 1100);
+          }
+
+      };
+     CodeMirrorHelper.init();
+     
      Board.init();
-
+     
      Shortcut.init({
+      //command,ctrl,shift,alt만 동시에 쓸 수 있고 스페이스로 구분.
       "command -" : Board.fontSize.bind(Board,-5),
       "command =" : Board.fontSize.bind(Board,5),
       "command `" : Board.mode.bind(Board),
-      "command 1" : Board.color.bind(Board,"red"),
+      "command 1" : Board.color.bind(Board,"white"),
       "command 2" : Board.color.bind(Board,"blue"),
-      "command 3" : Board.color.bind(Board,"green")
+      "command 3" : Board.color.bind(Board,"green"),
+      "command 4" : Board.color.bind(Board,"red"),
+      "command a" : CodeMirrorHelper.toggle.bind(CodeMirrorHelper)
      });
-     //command,ctrl,shift,alt만 동시에 쓸 수 있고 스페이스로 구분.
-     
      
      </script>
   </body>
