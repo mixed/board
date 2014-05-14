@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>Board</title>
     <link rel="stylesheet" href="../lib/codemirror/lib/codemirror.css">
-    <script type="text/javascript" src="../dist/board.min.js"></script>
+    <!--script type="text/javascript" src="../dist/board.min.js"></script-->
+    <script type="text/javascript" src="../src/board.js"></script>
+    <script type="text/javascript" src="../src/keycode.js"></script>
+    <script type="text/javascript" src="../src/shortcut.js"></script>
     <script src="../lib/codemirror/lib/codemirror.js"></script>
     <script src="../lib/codemirror/mode/javascript/javascript.js"></script>
     <script src="../lib/codemirror/addon/selection/active-line.js"></script>
@@ -22,6 +25,10 @@
   <body>
     <div id="code"></div>
      <script type="text/javascript">
+      var command = "command";
+      if(navigator.userAgent.indexOf("Mac")==-1){
+        command = "ctrl";
+      }
       var CodeMirrorHelper = {
           init : function(){
             this.code = document.getElementById("code");
@@ -65,25 +72,26 @@
               styleActiveLine: true,
               lineNumbers: true
             });
-            myCodeMirror.setSize(800, 1100);
+            myCodeMirror.setSize(500, 800);
           }
 
       };
      CodeMirrorHelper.init();
      
-     Board.init();
-     
-     Shortcut.init({
+      Board.init();
+      var shortcutMap = {};
       //command,ctrl,shift,alt만 동시에 쓸 수 있고 스페이스로 구분.
-      "command -" : Board.fontSize.bind(Board,-5),
-      "command =" : Board.fontSize.bind(Board,5),
-      "command `" : Board.mode.bind(Board),
-      "command 1" : Board.color.bind(Board,"white"),
-      "command 2" : Board.color.bind(Board,"blue"),
-      "command 3" : Board.color.bind(Board,"green"),
-      "command 4" : Board.color.bind(Board,"red"),
-      "command a" : CodeMirrorHelper.toggle.bind(CodeMirrorHelper)
-     });
+      shortcutMap[command+" -"] = Board.fontSize.bind(Board,-5);
+      shortcutMap[command+" ="] = Board.fontSize.bind(Board,5);
+      shortcutMap[command+" `"] = Board.mode.bind(Board);
+      shortcutMap[command+" 1"] = Board.color.bind(Board,"white");
+      shortcutMap[command+" 2"] = Board.color.bind(Board,"blue");
+      shortcutMap[command+" 3"] = Board.color.bind(Board,"green");
+      shortcutMap[command+" 4"] = Board.color.bind(Board,"red");
+      shortcutMap[command+" a"] = CodeMirrorHelper.toggle.bind(CodeMirrorHelper);
+
+     Shortcut.init(shortcutMap);
+      
      
      </script>
   </body>

@@ -14,6 +14,7 @@ var Board = {
     this.cursorPath = options.cursorPath || "../img/eraser.png";
     this.lineColor = options.lineColor||"#ffffff";
     this.lineWidth = options.lineWidth||10;
+    this.currentLineWidth = this.lineWidth;
     this.backgroundColor = options.backgroundColor||"#000";
     this.canvas.style.backgroundColor = this.backgroundColor;
   },
@@ -25,8 +26,11 @@ var Board = {
   },
   mode : function(){
     if(this.canvas.style.cursor != ""){
+      this.lineWidth = this.currentLineWidth;
       this.draw();
     }else{
+      this.currentLineWidth = this.lineWidth;
+      this.lineWidth = 30;
       this.eraser();
     }
   },
@@ -34,7 +38,7 @@ var Board = {
     this.oldLineColor = this.lineColor;
     this.oldLineWidth = this.lineWidth;
     this.color(this.backgroundColor);
-    this.canvas.style.cursor =  "url("+this.cursorPath+") 0 35, auto";
+    this.canvas.style.cursor =  "url("+this.cursorPath+") 0 15, auto";
   },
   draw : function(){
     this.color(this.oldLineColor);
