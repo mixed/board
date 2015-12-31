@@ -1,7 +1,6 @@
 var Board = {
   init : function(options){
 
-    // this.canvas = document.getElementById(container);
     this.canvas = document.createElement("canvas");
     document.body.appendChild(this.canvas);
     this.context = this.canvas.getContext('2d');
