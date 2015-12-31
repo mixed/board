@@ -1,5 +1,4 @@
 
-
 var Board = {
   init : function(options){
 
@@ -12,6 +11,7 @@ var Board = {
     this.bind();
 
   },
+  
   setInitValue : function(options){
 
     this.cursorPath = options.cursorPath || "../img/eraser.png";
