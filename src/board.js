@@ -1,6 +1,5 @@
 var Board = {
   init : function(options){
-	//asdfdsf
     this.canvas = document.createElement("canvas");
     document.body.appendChild(this.canvas);
     this.context = this.canvas.getContext('2d');
