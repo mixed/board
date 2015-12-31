@@ -1,7 +1,5 @@
-
 var Board = {
   init : function(options){
-
     this.canvas = document.createElement("canvas");
     document.body.appendChild(this.canvas);
     this.context = this.canvas.getContext('2d');
@@ -9,18 +7,14 @@ var Board = {
     this.setInitValue(options||{});
     this.resize();
     this.bind();
-
   },
-  
   setInitValue : function(options){
-
     this.cursorPath = options.cursorPath || "../img/eraser.png";
     this.lineColor = options.lineColor||"#ffffff";
     this.lineWidth = options.lineWidth||10;
     this.currentLineWidth = this.lineWidth;
     this.backgroundColor = options.backgroundColor||"#000";
     this.canvas.style.backgroundColor = this.backgroundColor;
-    
   },
   fontSize : function(num){
     this.lineWidth = this.lineWidth + num;
