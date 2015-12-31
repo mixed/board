@@ -1,3 +1,5 @@
+
+
 var Board = {
   init : function(options){
     this.canvas = document.createElement("canvas");
