@@ -21,6 +21,7 @@ var Board = {
     
   },
   fontSize : function(num){
+    
     this.lineWidth = this.lineWidth + num;
   },
   color : function(color){
