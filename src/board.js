@@ -11,13 +11,14 @@ var Board = {
 
   },
   setInitValue : function(options){
-    
+
     this.cursorPath = options.cursorPath || "../img/eraser.png";
     this.lineColor = options.lineColor||"#ffffff";
     this.lineWidth = options.lineWidth||10;
     this.currentLineWidth = this.lineWidth;
     this.backgroundColor = options.backgroundColor||"#000";
     this.canvas.style.backgroundColor = this.backgroundColor;
+    
   },
   fontSize : function(num){
     this.lineWidth = this.lineWidth + num;
