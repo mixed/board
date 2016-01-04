@@ -1,5 +1,6 @@
 var Board = {
   init : function(options){
+    
     this.canvas = document.createElement("canvas");
     document.body.appendChild(this.canvas);
     this.context = this.canvas.getContext('2d');
@@ -7,6 +8,7 @@ var Board = {
     this.setInitValue(options||{});
     this.resize();
     this.bind();
+
   },
   setInitValue : function(options){
     this.cursorPath = options.cursorPath || "../img/eraser.png";
