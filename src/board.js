@@ -11,6 +11,7 @@ var Board = {
 
   },
   setInitValue : function(options){
+    
     this.cursorPath = options.cursorPath || "../img/eraser.png";
     this.lineColor = options.lineColor||"#ffffff";
     this.lineWidth = options.lineWidth||10;
