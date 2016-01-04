@@ -7,6 +7,7 @@ var Board = {
     this.setInitValue(options||{});
     this.resize();
     this.bind();
+    
   },
   setInitValue : function(options){
     this.cursorPath = options.cursorPath || "../img/eraser.png";
